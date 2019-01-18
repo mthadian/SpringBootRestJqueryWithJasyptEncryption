@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+ <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'> -->
+    <!--
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+    <script src="/js/getcustomers.js"></script> -->
+   
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="/js/jquery.min.js"></script> 
+
+     
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+     <script src="/bootstrap/js/bootstrap.min.js"></script> 
+
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
+      
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap337.min.css"/>
+ 
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.18/b-1.5.4/r-2.2.2/datatables.min.js"></script> -->
+    <script type="text/javascript" src="/js/datatables.min.js"></script> 
+
+    
+    
+       <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.18/b-1.5.4/r-2.2.2/datatables.min.css"/> -->
+       <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+       <script type="text/javascript" src="/js/dataTables.fixedColumns.min.js"></script>
+      <!-- <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script> -->
+
+         <link rel="stylesheet" type="text/css" href="/css/bootstable.css"/>
+
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"> -->
+        <link rel="stylesheet" href="/css/jquery-confirm.min.css">
+
+
+         
+       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script> -->
+       <script src="/js/jquery-confirm.min.js"></script>
+
+
+        <script src="/js/bootstable.js"></script>
+                <link rel="stylesheet" href="/css/jquery.inputpicker.css" />
+        <script src="/js/jquery.inputpicker.js"></script>
+
+
+
+
+        <script src="/javascript/service.js"></script> 
+       
+
+        
+<meta charset="ISO-8859-1">
+<title>ESB</title>
+</head>
+
+<body>
+
+<div class="float-left"> 
+   
+      
+                <div class="panel panel-default">
+                <div class="panel-body">
+                    <!--
+
+                   
+                    <form class="form-inline">
+                        
+                        
+                            
+                            <label  for="service_Id">SERVICE ID</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="service_Id" placeholder="SERVICE ID "> 
+                            <label for="servicecode">SERVICE CODE</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="servicecode" placeholder="SERVICE CODE "> 
+                            <br/>
+
+                            <label for="sysdomid">SYSTEM DOMAIN ID</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="sysdomid" style="width:40%" placeholder="SELECT SYSDOM"> 
+
+                            <label for="servicetype">SERVICE TYPE</label>
+                            <select id="servicetype" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>SOAP</option>
+                            <option>SMTP</option>
+                            <option>MQ</option>
+                            <option>SQL</option>
+                            <option>HTTP</option>
+                          </select>
+                          
+                          <label for="servicename">SERVICE NAME</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="servicename" placeholder="SERVICE NAME "> 
+
+                            <br/>
+                            <br/>
+
+
+                            <label for="operation">OPERATION</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="operation" placeholder="OPERATION "> 
+
+                             <label for="version">VERSION</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="version" placeholder="e.g 1.0"> 
+
+                            <label for="sync">SYNC</label>
+                            <select id="sync" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>1</option>
+                            <option>0</option>
+                          </select>
+
+                          <label for="loglevel">LOG LEVEL</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="loglevel" placeholder="e.g DEBUG"> 
+
+                            <label for="dupcheck">DUPLICATE CHECK</label>
+                            <select id="dupcheck" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>1</option>
+                            <option>0</option>
+                          </select>
+                          <br/>
+                          <br/>
+
+
+
+                          <label for="genreply">GENERIC REPLY</label>
+                            <select id="genreply" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>1</option>
+                            <option>0</option>
+                          </select>
+
+                          <label for="timeout">TIMEOUT</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="timeout" placeholder="TIMEOUT(in s)"> 
+
+                            <label for="retrymax">RETRY MAX</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="retrymax" placeholder="RETRY MAX"> 
+
+                            <label for="retryinterval">RETRY INTERVAL</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="retryinterval" placeholder="RETRY INTERVAL">
+
+                             <label for="prjrlscode">PRJ RELEASE CODE</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="prjrlscode" placeholder="PRJ RELEASE CODE">
+                            <br/>
+                            <br/>
+
+
+                            <label for="emalertgrp">EMAIL ALERT GROUP</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="emalertgrp" placeholder="EMAIL ALERT GROUP">
+
+                            <label for="smsalertgrp">SMS ALERT GROUP</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="smsalertgrp" placeholder="SMS ALERT GROUP">
+
+                            <label for="emalertflag">EMAIL ALERT FLAG</label>
+                            <select id="emalertflag" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>1</option>
+                            <option>0</option>
+                          </select>
+
+                          <label for="smsalertflag">SMS ALERT FLAG</label>
+                            <select id="smsalertflag" class="form-control">
+                           
+                            <option value="" disabled selected>Choose...</option>
+                            <option>1</option>
+                            <option>0</option>
+                          </select>
+
+
+
+
+
+
+                           
+
+                            <button type="submit" class="btn btn-primary mb-2" id="saveservice">Save</button>
+                    </form>
+                -->
+                    
+                 
+
+
+
+                </div>
+                <div class="panel-footer" id="tablediv">
+
+                         <!--Table-->
+                        <table id="tableservice" class="table table-hover table-striped table-sm table-bordered"  style="width:100%" >
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th>SERVICE ID</th>
+                                <th>SERVICE CODE</th>
+                                <th>SYS DOMAIN ID</th>
+                                <th>SERVICE TYPE</th>
+                                <th>SERVICE NAME</th>
+                                <th>OPERATION</th>
+                                <th>VERSION</th>
+                                <th>SYNC</th>
+                                <th>LOG LEVEL</th>
+                                <th>DUPLICATE CHECK</th>
+                                <th>GENERIC REPLY</th>
+                                <th>TIMEOUT</th>
+                                <th>RETRY MAX</th>
+                                <th>RETRY INTERVAL</th>
+                                <th>PRJ RELEASE CODE</th>
+                                <th>EMAIL ALERT GROUP</th>
+                                <th>SMS ALERT GROUP</th>
+                                <th>EMAIL ALERT FLAG</th>
+                                <th>SMS ALERT FLAG</th>
+                                <!--<th>CREATION DATE</th> -->
+                              <!--  <th>CREATED BY</th> -->
+                                
+
+                                
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                       
+                     <!--
+                        <tfoot>
+                            <tr>
+                                <th>DOMAIN ID</th>
+                                <th>DOMAIN TYPE</th>
+                                <th>DOMAIN NAME</th>
+                          </tr>
+                            
+
+                        </tfoot>
+                        -->
+
+                 
+
+                       
+                          
+                          
+
+                        </table>
+
+
+                        <!--Table-->
+                </div>
+                </div>
+              </div>
+
+                
+
+      
+        <!--
+        <div id="button1">
+        <a href="#" class="btn btn-primary">Save1</a>
+        </div>
+       -->
+      
+
+
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_SERVICE_MONITORING")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreServiceMonitoring.findAll", query = "SELECT e FROM EsbcoreServiceMonitoring e")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByServiceId", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.serviceId = :serviceId")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByServiceIdCorr", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.serviceIdCorr = :serviceIdCorr")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByServiceName", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.serviceName = :serviceName")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByOperation", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.operation = :operation")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByVersion", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.version = :version")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByStatus", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.status = :status")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlow", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flow = :flow")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByStep", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.step = :step")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByDateBegin", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.dateBegin = :dateBegin")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByDateEnd", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.dateEnd = :dateEnd")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByErrorType", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.errorType = :errorType")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByErrorDesc", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.errorDesc = :errorDesc")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByRetryCount", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.retryCount = :retryCount")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByRetryMax", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.retryMax = :retryMax")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByServiceMessageId", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.serviceMessageId = :serviceMessageId")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByMqMessageId", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.mqMessageId = :mqMessageId")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField1", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField1 = :flexField1")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField2", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField2 = :flexField2")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField3", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField3 = :flexField3")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField4", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField4 = :flexField4")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField5", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField5 = :flexField5")
+    , @NamedQuery(name = "EsbcoreServiceMonitoring.findByFlexField6", query = "SELECT e FROM EsbcoreServiceMonitoring e WHERE e.flexField6 = :flexField6")})
+public class EsbcoreServiceMonitoring implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SERVICE_ID")
+    private BigDecimal serviceId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SERVICE_ID_CORR")
+    private BigInteger serviceIdCorr;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "SERVICE_NAME")
+    private String serviceName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "OPERATION")
+    private String operation;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "VERSION")
+    private String version;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "STATUS")
+    private String status;
+    @Size(max = 255)
+    @Column(name = "FLOW")
+    private String flow;
+    @Size(max = 255)
+    @Column(name = "STEP")
+    private String step;
+    @Column(name = "DATE_BEGIN")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateBegin;
+    @Column(name = "DATE_END")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateEnd;
+    @Size(max = 20)
+    @Column(name = "ERROR_TYPE")
+    private String errorType;
+    @Size(max = 4000)
+    @Column(name = "ERROR_DESC")
+    private String errorDesc;
+    @Lob
+    @Column(name = "ERROR_DESC2")
+    private String errorDesc2;
+    @Column(name = "RETRY_COUNT")
+    private Integer retryCount;
+    @Column(name = "RETRY_MAX")
+    private Integer retryMax;
+    @Size(max = 255)
+    @Column(name = "SERVICE_MESSAGE_ID")
+    private String serviceMessageId;
+    @Size(max = 255)
+    @Column(name = "MQ_MESSAGE_ID")
+    private String mqMessageId;
+    @Lob
+    @Column(name = "MESSAGE")
+    private String message;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_1")
+    private String flexField1;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_2")
+    private String flexField2;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_3")
+    private String flexField3;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_4")
+    private String flexField4;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_5")
+    private String flexField5;
+    @Size(max = 100)
+    @Column(name = "FLEX_FIELD_6")
+    private String flexField6;
+
+    public EsbcoreServiceMonitoring() {
+    }
+
+    public EsbcoreServiceMonitoring(BigDecimal serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public EsbcoreServiceMonitoring(BigDecimal serviceId, BigInteger serviceIdCorr, String serviceName, String operation, String version, String status) {
+        this.serviceId = serviceId;
+        this.serviceIdCorr = serviceIdCorr;
+        this.serviceName = serviceName;
+        this.operation = operation;
+        this.version = version;
+        this.status = status;
+    }
+
+    public BigDecimal getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(BigDecimal serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public BigInteger getServiceIdCorr() {
+        return serviceIdCorr;
+    }
+
+    public void setServiceIdCorr(BigInteger serviceIdCorr) {
+        this.serviceIdCorr = serviceIdCorr;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFlow() {
+        return flow;
+    }
+
+    public void setFlow(String flow) {
+        this.flow = flow;
+    }
+
+    public String getStep() {
+        return step;
+    }
+
+    public void setStep(String step) {
+        this.step = step;
+    }
+
+    public Date getDateBegin() {
+        return dateBegin;
+    }
+
+    public void setDateBegin(Date dateBegin) {
+        this.dateBegin = dateBegin;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(Date dateEnd) {
+        this.dateEnd = dateEnd;
+    }
+
+    public String getErrorType() {
+        return errorType;
+    }
+
+    public void setErrorType(String errorType) {
+        this.errorType = errorType;
+    }
+
+    public String getErrorDesc() {
+        return errorDesc;
+    }
+
+    public void setErrorDesc(String errorDesc) {
+        this.errorDesc = errorDesc;
+    }
+
+    public String getErrorDesc2() {
+        return errorDesc2;
+    }
+
+    public void setErrorDesc2(String errorDesc2) {
+        this.errorDesc2 = errorDesc2;
+    }
+
+    public Integer getRetryCount() {
+        return retryCount;
+    }
+
+    public void setRetryCount(Integer retryCount) {
+        this.retryCount = retryCount;
+    }
+
+    public Integer getRetryMax() {
+        return retryMax;
+    }
+
+    public void setRetryMax(Integer retryMax) {
+        this.retryMax = retryMax;
+    }
+
+    public String getServiceMessageId() {
+        return serviceMessageId;
+    }
+
+    public void setServiceMessageId(String serviceMessageId) {
+        this.serviceMessageId = serviceMessageId;
+    }
+
+    public String getMqMessageId() {
+        return mqMessageId;
+    }
+
+    public void setMqMessageId(String mqMessageId) {
+        this.mqMessageId = mqMessageId;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getFlexField1() {
+        return flexField1;
+    }
+
+    public void setFlexField1(String flexField1) {
+        this.flexField1 = flexField1;
+    }
+
+    public String getFlexField2() {
+        return flexField2;
+    }
+
+    public void setFlexField2(String flexField2) {
+        this.flexField2 = flexField2;
+    }
+
+    public String getFlexField3() {
+        return flexField3;
+    }
+
+    public void setFlexField3(String flexField3) {
+        this.flexField3 = flexField3;
+    }
+
+    public String getFlexField4() {
+        return flexField4;
+    }
+
+    public void setFlexField4(String flexField4) {
+        this.flexField4 = flexField4;
+    }
+
+    public String getFlexField5() {
+        return flexField5;
+    }
+
+    public void setFlexField5(String flexField5) {
+        this.flexField5 = flexField5;
+    }
+
+    public String getFlexField6() {
+        return flexField6;
+    }
+
+    public void setFlexField6(String flexField6) {
+        this.flexField6 = flexField6;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (serviceId != null ? serviceId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreServiceMonitoring)) {
+            return false;
+        }
+        EsbcoreServiceMonitoring other = (EsbcoreServiceMonitoring) object;
+        if ((this.serviceId == null && other.serviceId != null) || (this.serviceId != null && !this.serviceId.equals(other.serviceId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreServiceMonitoring[ serviceId=" + serviceId + " ]";
+    }
+    
+}

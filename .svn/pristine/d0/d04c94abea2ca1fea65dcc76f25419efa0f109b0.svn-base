@@ -1,0 +1,331 @@
+$(document).ready(function()
+
+    {
+
+    	   $('#sysdomid').inputpicker
+    	   ({
+		    url: '/api/systemdomains',
+		    fields:['systemDomainId'],
+		    fieldText:'systemDomainId',
+		   fieldValue:'systemDomainId',
+		    filterOpen: true,
+		    autoOpen: true
+		});
+
+
+//  $('#tablesystem').DataTable();
+  $('#saveservice').on('click',function(e){
+        	
+        	var selected_sysdom = $('#sysdomid').inputpicker('element');
+        	var sysdom_Id = selected_sysdom['systemDomainId']
+        	console.log('sysdomain---->');
+        	console.log(sysdom_Id);
+
+        	var service_Id=$('#service_Id').val();
+        	var service_code=$('#servicecode').val();
+        	//selectfield
+        	//var sysdomid=$('#sysdomid').val();
+        	var service_type=$('#servicetype :selected').val();
+        	var service_name=$('#servicename').val();
+        	var oper=$('#operation').val();
+        	var ver=$('#version').val();
+        	var sync_=$('#sync :selected').val();
+        	var log_level=$('#loglevel').val();
+        	var dupcheck=$('#dupcheck :selected').val();
+        	var genreply=$('#genreply :selected').val();
+        	var time_out=$('#timeout').val();
+        	var retry_max=$('#retrymax').val();
+        	var retry_interval=$('#retryinterval').val();
+        	var prjrlscode=$('#prjrlscode').val();
+        	var emalertgrp=$('#emalertgrp').val();
+        	var smsalertgrp=$('#smsalertgrp').val();
+
+        	var emalertflag=$('#emalertflag :selected').val();
+        	var smsalertflag=$('#smsalertflag :selected').val();
+
+        	console.log('Service----->');
+
+        	console.log(service_Id);
+        	console.log(service_code);
+        	console.log(sysdom_Id);
+        	console.log(service_type);
+        	console.log(service_name);
+        	console.log(oper);
+        	console.log(ver);
+        	console.log(sync_);
+        	console.log(log_level);
+        	console.log(dupcheck);
+        	console.log(genreply);
+        	console.log(time_out);
+        	console.log(retry_max);
+        	console.log(retry_interval);
+        	console.log(prjrlscode);
+        	console.log(emalertgrp);
+        	console.log(smsalertgrp);
+        	console.log(emalertflag);
+        	console.log(smsalertflag);
+        	
+
+        	var d=new Date().toJSON().slice(0,10);
+        	var dt=new Date().toJSON();
+        	console.log(d);
+        	console.log(dt);
+
+
+        	
+      
+			$.ajax({
+        		type: 'POST',
+        		url: '/api/services',
+				headers: {
+					      'Accept': 'application/json',
+					      'Content-Type': 'application/json'
+					    },
+        		data: JSON.stringify({
+        			serviceId:service_Id,
+        			serviceCode:service_code,
+        			systemDomainId:sysdom_Id,
+        			serviceType:service_type,
+        			serviceName:service_name,
+        			operation:oper,
+        			version:ver,
+        			sync:sync_,
+        			logLevel:log_level,
+        			duplicateCheck:dupcheck,
+        			genericReply:genreply,
+        			timeout:time_out,
+        			retryMax:retry_max,
+        			retryInterval:retry_interval,
+        			prjReleaseCode:prjrlscode,
+        			emailAlertGroup:emalertgrp,
+        			smsAlertGroup:smsalertgrp,
+        			emailAlertFlag:emalertflag,
+        			smsAlertFlag:smsalertflag,
+        			creationDate:dt
+        			
+
+        			
+        			
+        		})
+ 
+
+        	}); 
+        	
+        });
+
+
+
+
+
+        $.ajax
+        ({
+           	type:'GET',	
+           	context:this,
+        	url: '/api/services',
+        	//cache: false,
+        	success: function(services)
+        	{
+        		//console.log('success', domains);
+        		var service_data='';
+        		$.each(services,function(key,service)
+        			{
+        				
+        				service_data += '<tr>';
+        				service_data += '<td id="sId">'+service.serviceId+'</td>';
+        				service_data += '<td id="sCode">'+service.serviceCode+'</td>';
+        				service_data += '<td id="sdId">'+service.systemDomainId+'</td>';
+        				service_data += '<td id="sType">'+service.serviceType+'</td>';
+        				service_data += '<td id="sName">'+service.serviceName+'</td>';
+        				service_data += '<td id="sOp">'+service.operation+'</td>';
+        				service_data += '<td id="sVer">'+service.version+'</td>';
+        				service_data += '<td id="sSync">'+service.sync+'</td>';
+        				service_data += '<td id="sLlvl">'+service.logLevel+'</td>';
+        				service_data += '<td id="sDup">'+service.duplicateCheck+'</td>';
+        				service_data += '<td id="sGRep">'+service.genericReply+'</td>';
+        				service_data += '<td id="stout">'+service.timeout+'</td>';
+        				service_data += '<td id="sRmax">'+service.retryMax+'</td>';
+        				service_data += '<td id="sRInter">'+service.retryInterval+'</td>';
+        				service_data += '<td id="sRlsCode">'+service.prjReleaseCode+'</td>';
+        				service_data += '<td id="sEAGroup">'+service.emailAlertGroup+'</td>';
+        				service_data += '<td id="sSAGroup">'+service.smsAlertGroup+'</td>';
+        				service_data += '<td id="sEAFlag">'+service.emailAlertFlag+'</td>';
+        				service_data += '<td id="sSAFlag">'+service.smsAlertFlag+'</td>';
+        				/**service_data += '<td id="scDate">'+service.creationDate+'</td>'; **/
+        				/**service_data += '<td id="sCBy">'+service.createdBy+'</td>'; **/ 
+        				service_data += '</tr>';
+        			});
+
+
+        	
+        		$('#tableservice tbody').append(service_data);
+        		 $('#tableservice').SetEditable(
+
+        		 	 {
+								  onEdit: function(elem) 
+								  {
+								  	//console.log('edited');
+								  	var sId = $(elem).closest('tr').find('#sId').text();
+								  	var sCode = $(elem).closest('tr').find('#sCode').text();
+								  	var sdId = $(elem).closest('tr').find('#sdId').text();
+								  	var sType = $(elem).closest('tr').find('#sType').text();
+								  	var sName = $(elem).closest('tr').find('#sName').text();
+								  	var sOp = $(elem).closest('tr').find('#sOp').text();
+								  	var sVer = $(elem).closest('tr').find('#sVer').text();
+								  	var sSync = $(elem).closest('tr').find('#sSync').text();
+								  	var sLlvl = $(elem).closest('tr').find('#sLlvl').text();
+								  	var sDup = $(elem).closest('tr').find('#sDup').text();
+								  	var sGRep = $(elem).closest('tr').find('#sGRep').text();
+								  	var stout = $(elem).closest('tr').find('#stout').text();
+								  	var sRmax = $(elem).closest('tr').find('#sRmax').text();
+								  	var sRInter = $(elem).closest('tr').find('#sRInter').text();
+								  	var sRlsCode = $(elem).closest('tr').find('#sRlsCode').text();
+								  	var sEAGroup = $(elem).closest('tr').find('#sEAGroup').text();
+								  	var sSAGroup = $(elem).closest('tr').find('#sSAGroup').text();
+								  	var sEAFlag = $(elem).closest('tr').find('#sEAFlag').text();
+								  	var sSAFlag = $(elem).closest('tr').find('#sSAFlag').text();
+								  	/**
+								  	var scDate = $(elem).closest('tr').find('#scDate').text();
+								  	var sCBy = $(elem).closest('tr').find('#sCBy').text(); **/								
+								   console.log("get row data ");
+								   console.log(sId);
+								   console.log(sCode);
+								   console.log(sdId);
+
+
+								  
+								  $.ajax({
+								  	type:'PUT',
+								  	url: '/api/services/',
+        							//cache: false,
+        							headers: {
+										      'Accept': 'application/json',
+										      'Content-Type': 'application/json'
+										    },
+									data: JSON.stringify({
+										serviceId:sId,
+										serviceCode:sCode,
+										systemDomainId:sdId,
+										serviceType:sType,
+										serviceName:sName,
+										operation:sOp,
+										version:sVer,
+										sync:sSync,
+										logLevel:sLlvl,
+										duplicateCheck:sDup,
+										genericReply:sGRep,
+										timeout:stout,
+										retryMax:sRmax,
+										retryInterval:sRInter,
+										prjReleaseCode:sRlsCode,
+										emailAlertGroup:sEAGroup,
+										smsAlertGroup:sSAGroup,
+										emailAlertFlag:sEAFlag,
+										smsAlertFlag:sSAFlag
+	
+						        		}),
+									success:function()
+									{
+										location.reload();
+										console.log('refresh table');
+										//$('#card1').hide('1000').show();
+										//$('#tabledomain').DataTable().ajax.reload();
+									}
+        							
+
+								  }); 
+								  
+
+								 
+
+								  }, 
+
+								  onDelete: function() 
+								  {
+								  	//var bid = this.id; // button ID 
+  									 //var trid = $(this).closest('tr').attr('id');
+  									 //console.log('on delete');
+								 
+								  }, 
+
+								  onBeforeDelete: function(elem)
+								  {
+								  	
+								  	var rsId = $(elem).closest('tr').find('#sId').text();
+								  	var rsCode = $(elem).closest('tr').find('#sCode').text();
+								  	var rsdId = $(elem).closest('tr').find('#sdId').text();
+								  	
+
+								  console.log("delete this ");
+								  console.log(rsId);
+								  console.log(rsCode);
+								  console.log(rsdId);
+
+							  
+															           
+
+									 $.confirm({
+									 		//icon: 'fa fa-spinner fa-spin',
+										    title: 'DELETE '+rsId+ '?',
+										    //content: 'Delete '+dName+ '?',
+										    buttons: {
+										        YES: {
+										        	btnClass: 'btn-red',
+										        	action:function () 
+											        		{
+											        			//
+											        			$.ajax({
+																	type:'DELETE',
+																	url: '/api/services/'+rsId
+																    // cache: false
+																});
+																location.reload();
+
+											        		}
+
+										        		},
+
+										        cancel:{ 
+										        	btnClass: 'btn-blue',
+										        	action:function () {
+										        		location.reload();
+										            //$.alert('Canceled!');
+										        }},
+										        
+										    }
+										});
+
+							      //var nameTxt = $(elem).closest('tr').find('td:first-child').text();
+								
+
+								  },
+
+								  onAdd: function() 
+								  {
+								  	console.log('on add');
+								  } 
+					}
+
+
+			       );
+        		    $('#tableservice').DataTable();
+        		    //$('#tableservice').floatThead()
+        		   // $( "#tablediv" ).load(window.location.href + "#tablediv" );
+
+        		
+
+       		
+        	},
+        	
+        	error: function()
+        	{
+        		console.log(error);
+        	}
+
+        });
+        
+
+      
+
+
+   /* $("#card1").toggle(300).toggle(300); */
+   });

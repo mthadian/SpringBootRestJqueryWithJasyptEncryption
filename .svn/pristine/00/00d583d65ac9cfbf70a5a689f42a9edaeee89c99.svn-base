@@ -1,0 +1,9 @@
+package com.KCB.bank.Repos;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.KCB.bank.models.EsbcoreSystem;
+
+public interface EsbcoreSystemRepository extends JpaRepository<EsbcoreSystem, String>{
+
+}

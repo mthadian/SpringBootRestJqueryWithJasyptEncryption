@@ -1,0 +1,156 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_SERVICE_MESSAGE_ID")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreServiceMessageId.findAll", query = "SELECT e FROM EsbcoreServiceMessageId e")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByServiceId", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.serviceId = :serviceId")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByServiceName", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.serviceName = :serviceName")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByOperation", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.operation = :operation")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByVersion", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.version = :version")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByDateInsert", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.dateInsert = :dateInsert")
+    , @NamedQuery(name = "EsbcoreServiceMessageId.findByMessageId", query = "SELECT e FROM EsbcoreServiceMessageId e WHERE e.messageId = :messageId")})
+public class EsbcoreServiceMessageId implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Column(name = "SERVICE_ID")
+    private BigInteger serviceId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "SERVICE_NAME")
+    private String serviceName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "OPERATION")
+    private String operation;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "VERSION")
+    private String version;
+    @Column(name = "DATE_INSERT")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateInsert;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "MESSAGE_ID")
+    private String messageId;
+
+    public EsbcoreServiceMessageId() {
+    }
+
+    public EsbcoreServiceMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
+    public EsbcoreServiceMessageId(String messageId, String serviceName, String operation, String version) {
+        this.messageId = messageId;
+        this.serviceName = serviceName;
+        this.operation = operation;
+        this.version = version;
+    }
+
+    public BigInteger getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(BigInteger serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public Date getDateInsert() {
+        return dateInsert;
+    }
+
+    public void setDateInsert(Date dateInsert) {
+        this.dateInsert = dateInsert;
+    }
+
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (messageId != null ? messageId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreServiceMessageId)) {
+            return false;
+        }
+        EsbcoreServiceMessageId other = (EsbcoreServiceMessageId) object;
+        if ((this.messageId == null && other.messageId != null) || (this.messageId != null && !this.messageId.equals(other.messageId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreServiceMessageId[ messageId=" + messageId + " ]";
+    }
+    
+}

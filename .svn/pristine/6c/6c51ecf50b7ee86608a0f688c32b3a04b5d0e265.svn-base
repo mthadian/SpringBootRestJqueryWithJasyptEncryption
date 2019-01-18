@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: PMMuthama
+Build-Jdk: 10.0.2
+Implementation-Title: ESBFWPortal
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.KCB
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ESBFWPortal
+Created-By: Maven Integration for Eclipse
+

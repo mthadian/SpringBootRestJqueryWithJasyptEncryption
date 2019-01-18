@@ -1,0 +1,225 @@
+$(document).ready(function()
+{
+	var form = $("#form_new_service").show();
+	form.validate({ // initialize the plugin
+        // your rules and options,
+        errorPlacement: function(){
+            return false;  // suppresses error message text
+        }
+        
+    });
+ 
+          form.steps({
+            headerTag: "h3",
+            bodyTag: "fieldset",
+            transitionEffect: "slideLeft",            
+            onStepChanging: function (event, currentIndex, newIndex)
+            {
+              // Allways allow previous action even if the current form is not valid!
+              if (currentIndex > newIndex)
+              {
+                return true;
+              }
+            
+             
+              // Needed in some cases if the user went back (clean up)
+              if (currentIndex < newIndex)
+              {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+              }
+              form.validate().settings.ignore = ":disabled,:hidden";
+              return form.valid();
+            },
+            onStepChanged: function (event, currentIndex, priorIndex)
+            {
+              if (currentIndex === 1)
+              {
+                //RULE 
+                console.log('111111111111');
+                var service_id=$('#serviceid').val();
+                  
+                $("#txtserviceid").empty();
+                $("#txtserviceid").append( "SERVICE ID:" +service_id );
+                
+              
+              }
+               if (currentIndex === 2)
+              {
+                //RULE CONDITION
+                console.log('111111111111');
+                var rule_id=$('#ruleid').val();
+                  
+                $("#txtruleid").empty();
+                $("#txtruleid").append( "RULE ID: " +rule_id );
+                
+              
+              }
+              if (currentIndex === 3)
+              {
+                //RULE DESTINATION
+               
+                var rule_id=$('#ruleid').val();   
+                $("#txtruleid_dest").empty();
+                $("#txtruleid_dest").append( "RULE ID: " +rule_id );
+                
+              
+              }
+              if (currentIndex === 4)
+              {
+                //SERVICE DESTINATION
+               
+              
+              }
+               if (currentIndex === 5)
+              {
+                //SUMMARY
+                 /*service start*/
+                var servi_id=$('#serviceid').val();   
+                $("#txtserviceid_sum").empty();
+                $("#txtserviceid_sum").append( "SERVICE ID:" +servi_id);
+
+                var servi_code=$('#servicecode').val();   
+                $("#txtservicecode_sum").empty();
+                $("#txtservicecode_sum").append( "SERVICE CODE: " +servi_code);
+
+                var servi_name=$('#servicename').val();   
+                $("#txtservicename_sum").empty();
+                $("#txtservicename_sum").append( "SERVICE NAME: " +servi_name);
+
+                var servi_sysdom=$('#systemdomainid').val();   
+                $("#txtsysdom_sum").empty();
+                $("#txtsysdom_sum").append( "SYSTEM DOMAIN: " +servi_sysdom);
+
+                var servi_oper=$('#operation').val();   
+                $("#txtserviceoper_sum").empty();
+                $("#txtserviceoper_sum").append( "SERVICE OPERATION: " +servi_oper);
+
+                 
+                var servi_type=$('#servicetype :selected').val();  
+                $("#txtservicetype_sum").empty();
+                $("#txtservicetype_sum").append( "SERVICE TYPE: " +servi_type);
+
+                var servi_sync=$('#sync :selected').val();  
+                $("#txtservicesync_sum").empty();
+                $("#txtservicesync_sum").append( "SYNC: " +servi_sync);
+
+
+                var servi_tmout=$('#timeout').val();   
+                $("#txtservicetimeout_sum").empty();
+                $("#txtservicetimeout_sum").append( "TIMEOUT: " +servi_tmout);
+
+                /*service end*/
+
+                /*rule start*/
+                var rule_ruleid=$('#ruleid').val();   
+                $("#txtruleid_sum").empty();
+                $("#txtruleid_sum").append( "ID: " +rule_ruleid);
+
+                var rule_ruleorder=$('#ruleorder').val();   
+                $("#txtruleorder_sum").empty();
+                $("#txtruleorder_sum").append( "RULE ORDER: " +rule_ruleorder);
+
+                /*rule end*/
+
+                /*rule condition start*/
+                var rulecon_id=$('#ruleconid').val();   
+                $("#txtruleconid_sum").empty();
+                $("#txtruleconid_sum").append( "ID: " +rulecon_id);
+
+                var rulecon_order=$('#ruleconorder').val();   
+                $("#txtruleconorder_sum").empty();
+                $("#txtruleconorder_sum").append( "ORDER: " +rulecon_order);
+
+                var rulecon_fieldoperation=$('#ruleconfieldoperation').val();   
+                $("#txtruleconfieldoper_sum").empty();
+                $("#txtruleconfieldoper_sum").append( "FIELD OPERATION: " +rulecon_fieldoperation);
+
+                var rulecon_fieldname=$('#ruleconfieldname').val();   
+                $("#txtruleconfieldname_sum").empty();
+                $("#txtruleconfieldname_sum").append( "FIELD NAME: " +rulecon_fieldname);
+
+                var rulecon_fieldvalue=$('#ruleconfieldvalue').val();   
+                $("#txtruleconfieldvalue_sum").empty();
+                $("#txtruleconfieldvalue_sum").append( "FIELD VALUE: " +rulecon_fieldvalue);
+
+
+                /*rule condition end*/
+
+                /*rule destination start*/
+
+                var ruledest_id=$('#ruledestid').val();   
+                $("#txtruledestid_sum").empty();
+                $("#txtruledestid_sum").append( "ID: " +ruledest_id);
+
+                /*rule destination end*/
+
+                /*service destination start*/
+
+                var servicedestination_id=$('#servicedestinationid').val();   
+                $("#txtservicedestid_sum").empty();
+                $("#txtservicedestid_sum").append( "ID: " +servicedestination_id);
+
+                var servicedestination_name=$('#servicedestinationname').val();   
+                $("#txtservicedestname_sum").empty();
+                $("#txtservicedestname_sum").append( "NAME: " +servicedestination_name);
+
+             
+                var servicedestination_enabled=$('#enabled :selected').val();   
+                $("#txtservicedestenabled_sum").empty();
+                $("#txtservicedestenabled_sum").append( "ENABLED: " +servicedestination_enabled);
+
+                var servicedestination_uri=$('#uri').val();   
+                $("#txtservicedesturl_sum").empty();
+                $("#txtservicedesturl_sum").append( "URL: " +servicedestination_uri);
+
+                /*service destination end*/
+
+
+
+
+               
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+               
+              
+              }
+              
+              // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+              if (currentIndex === 2 && priorIndex === 3)
+              {
+              
+                form.steps("previous");
+              }
+              
+            },
+            onFinishing: function (event, currentIndex)
+            {
+              form.validate().settings.ignore = ":disabled";
+              return form.valid();
+              alert("onfinishing");
+              console.log("onfinishing");
+            },
+            onFinished: function (event, currentIndex)
+            {
+               $('#serviceModal').modal('toggle');
+               alert("onfinished");
+               console.log("onfinished");
+              
+            }
+          })
+
+});

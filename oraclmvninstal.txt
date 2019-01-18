@@ -1,0 +1,7 @@
+
+mvn install:install-file -Dfile=E:\p2p\bankaa\getBlob\getBlob\dist\lib\ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2 -Dpackaging=jar
+
+
+mvn -Djasypt.encryptor.password={key} -Dspring.profiles.active={env} spring-boot:run
+
+env[dev,uat,test]

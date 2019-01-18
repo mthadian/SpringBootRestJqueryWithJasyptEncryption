@@ -1,0 +1,391 @@
+$(document).ready(function()
+
+    {
+
+//  $('#tablesystem').DataTable();
+
+        $.ajax
+        ({
+           	type:'GET',	
+           	context:this,
+        	url: '/api/systems',
+        	
+        	success: function(systems)
+        	{
+        		//console.log('success', systems);
+        		var system_data='';
+        		$.each(systems,function(key,system)
+        			{
+        				
+        				system_data += '<tr>';
+        				system_data += '<td id="Code">'+system.systemCode+'</td>';
+        				system_data += '<td id="Name">'+system.systemName+'</td>';
+        				system_data += '</tr>';
+        			});
+
+
+        	
+        		$('#tablesystem tbody').append(system_data);
+        		 
+        		    $('#tablesystem').DataTable();       		
+
+       		
+        	},
+        	cache: false,
+        	
+        	error: function()
+        	{
+        		
+        	}
+
+        });
+
+
+
+        $.ajax
+        ({
+            type:'GET', 
+            context:this,
+            url: '/api/domains',
+            //cache: false,
+            success: function(domains)
+            {
+                //console.log('success', domains);
+                var domain_data='';
+                $.each(domains,function(key,domain)
+                    {
+                        
+                        domain_data += '<tr>';
+                        domain_data += '<td id="dId">'+domain.domainId+'</td>';
+                        domain_data += '<td id="dType">'+domain.domainType+'</td>';
+                        domain_data += '<td id="dName">'+domain.domainName+'</td>';
+                        domain_data += '</tr>';
+                    });
+
+
+            
+                $('#tabledomain tbody').append(domain_data);
+                
+                    $('#tabledomain').DataTable();
+                   
+                
+
+            
+            },
+            
+            error: function()
+            {
+               
+            }
+
+        });
+
+        $.ajax
+                    ({
+                        type:'GET', 
+                        context:this,
+                        url: '/api/systemdomains',
+                        
+                        success: function(systemdomains)
+                        {
+                            //console.log('success', systemdomains);
+                            var systemdomain_data='';
+                            $.each(systemdomains,function(key,systemdomain)
+                                {
+                                    
+                                    
+                                    systemdomain_data += '<tr>';
+                                    systemdomain_data += '<td id="sdId">'+systemdomain.systemDomainId+'</td>';
+                                    systemdomain_data += '<td id="sCode">'+systemdomain.systemCode['systemCode']+'</td>';
+                                    systemdomain_data += '<td id="sName">'+systemdomain.systemCode['systemName']+'</td>';
+                                    systemdomain_data += '<td id="dId">'+systemdomain.domainId+'</td>';
+                                    systemdomain_data += '</tr>';
+                                });
+
+
+                        
+                            $('#tablesystemdomain tbody').append(systemdomain_data);
+                              
+                            $('#tablesystemdomain').DataTable();
+
+                            
+
+                        
+                        },
+
+                        //cache:false,
+                        
+                        error: function()
+                        {
+                            
+                        }
+
+                    });
+
+                            
+    $.ajax
+        ({
+            type:'GET', 
+            context:this,
+            url: '/api/services',
+            //cache: false,
+            success: function(services)
+            {
+                //console.log('success', domains);
+                var service_data='';
+                $.each(services,function(key,service)
+                    {
+                        
+                        service_data += '<tr>';
+                        service_data += '<td id="sId">'+service.serviceId+'</td>';
+                        service_data += '<td id="sCode">'+service.serviceCode+'</td>';
+                        service_data += '<td id="sdId">'+service.systemDomainId+'</td>';
+                        service_data += '<td id="sType">'+service.serviceType+'</td>';
+                        service_data += '<td id="sName">'+service.serviceName+'</td>';
+                        service_data += '<td id="sOp">'+service.operation+'</td>';
+                        service_data += '<td id="sVer">'+service.version+'</td>';
+                        service_data += '<td id="sSync">'+service.sync+'</td>';
+                        service_data += '<td id="sLlvl">'+service.logLevel+'</td>';
+                        service_data += '<td id="sDup">'+service.duplicateCheck+'</td>';
+                        service_data += '<td id="sGRep">'+service.genericReply+'</td>';
+                        service_data += '<td id="stout">'+service.timeout+'</td>';
+                        service_data += '<td id="sRmax">'+service.retryMax+'</td>';
+                        service_data += '<td id="sRInter">'+service.retryInterval+'</td>';
+                        service_data += '<td id="sRlsCode">'+service.prjReleaseCode+'</td>';
+                        service_data += '<td id="sEAGroup">'+service.emailAlertGroup+'</td>';
+                        service_data += '<td id="sSAGroup">'+service.smsAlertGroup+'</td>';
+                        service_data += '<td id="sEAFlag">'+service.emailAlertFlag+'</td>';
+                        service_data += '<td id="sSAFlag">'+service.smsAlertFlag+'</td>';
+                        /**service_data += '<td id="scDate">'+service.creationDate+'</td>'; **/
+                        /**service_data += '<td id="sCBy">'+service.createdBy+'</td>'; **/ 
+                        service_data += '</tr>';
+                    });
+
+
+            
+                $('#tableservice tbody').append(service_data);
+                 
+                    $('#tableservice').DataTable({
+                          "columns": [
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" },
+                            { "width": "20%" }
+                          ]
+                        });
+                                        //$('#tableservice').floatThead()
+                   // $( "#tablediv" ).load(window.location.href + "#tablediv" );
+
+                
+
+            
+            },
+            
+            error: function()
+            {
+                console.log(error);
+            }
+
+        });
+
+         $.ajax
+                 ({
+                        type:'GET', 
+                        context:this,
+                        url: '/api/rules',
+                        
+                        success: function(rules)
+                        {
+                            //console.log('success', systemdomains);
+                            var rules_data='';
+                            $.each(rules,function(key,rule)
+                                {
+                                    //console.log(systemdomain.systemCode['systemName']);
+                                    
+                                    rules_data += '<tr>';
+                                    rules_data += '<td id="rlId">'+rule.ruleId+'</td>';
+                                    rules_data += '<td id="rlsid">'+rule.serviceId['serviceId']+'</td>';
+                                    rules_data += '<td id="rlsnam">'+rule.serviceId['serviceName']+'</td>';
+                                    rules_data += '<td id="rlorder">'+rule.ruleOrder+'</td>';
+                                    rules_data += '</tr>';
+                                });
+
+
+                        
+                            $('#tablerule tbody').append(rules_data);
+                             $('#tablerule').DataTable();
+
+                            
+
+                        
+                        },
+
+                        //cache:false,
+                        
+                        error: function(error)
+                        {
+                            
+                        }
+
+                    });
+
+
+
+                  $.ajax
+                    ({
+                        type:'GET', 
+                        context:this,
+                        url: '/api/ruleconditions',
+                        
+                        success: function(ruleconditions)
+                        {
+                            //console.log('success', systemdomains);
+                            var rulecon_data='';
+                            $.each(ruleconditions,function(key,rulecondition)
+                                {
+                                    //console.log(systemdomain.systemCode['systemName']);
+                                    
+                                    rulecon_data += '<tr>';
+                                    rulecon_data += '<td id="rlcdid">'+rulecondition.ruleConditionId+'</td>';
+                                    rulecon_data += '<td id="rlid">'+rulecondition.ruleId['ruleId']+'</td>';
+                                    rulecon_data += '<td id="rlconord">'+rulecondition.ruleConditionOrder+'</td>';
+                                    rulecon_data += '<td id="rlfldopr">'+rulecondition.fieldOperation+'</td>';
+                                    rulecon_data += '<td id="rlfldnm">'+rulecondition.fieldName+'</td>';
+                                    rulecon_data += '<td id="rlfldval">'+rulecondition.fieldValue+'</td>';
+                                    rulecon_data += '</tr>';
+                                });
+
+
+                        
+                            $('#tablerulecond tbody').append(rulecon_data);
+                                $('#tablerulecond').DataTable();
+
+                            
+
+                        
+                        },
+
+                        //cache:false,
+                        
+                        error: function()
+                        {
+                            
+                        }
+
+                    });
+
+                     $.ajax
+                    ({
+                        type:'GET', 
+                        context:this,
+                        url: '/api/ruledestinations',
+                        
+                        success: function(ruledestinations)
+                        {
+                            //console.log('success', systemdomains);
+                            var ruledest_data='';
+                            $.each(ruledestinations,function(key,ruledestination)
+                                {
+                                    //console.log(systemdomain.systemCode['systemName']);
+                                    
+                                    ruledest_data += '<tr>';
+                                    ruledest_data += '<td id="rldid">'+ruledestination.ruleDestinationId+'</td>';
+                                    ruledest_data += '<td id="rlid">'+ruledestination.ruleId['ruleId']+'</td>';
+                                    ruledest_data += '<td id="rldsid">'+ruledestination.serviceId['serviceId']+'</td>';
+                                    
+                                    ruledest_data += '</tr>';
+                                });
+
+
+                        
+                            $('#tableruledest tbody').append(ruledest_data);
+                            $('#tableruledest').DataTable();
+
+                            
+
+                        
+                        },
+
+                        //cache:false,
+                        
+                        error: function()
+                        {
+                            
+                        }
+
+                    });
+
+                    $.ajax
+        ({
+            type:'GET', 
+            context:this,
+            url: '/api/servicedestinations',
+            //cache: false,
+            success: function(servicedestinations)
+            {
+                //console.log('success', domains);
+                var sd_data='';
+                $.each(servicedestinations,function(key,servicedestination)
+                    {
+                        
+                        sd_data += '<tr>';
+                        sd_data += '<td id="sdid">'+servicedestination.serviceId+'</td>';
+                        sd_data += '<td id="url">'+servicedestination.uri+'</td>';
+                        sd_data += '<td id="name">'+servicedestination.name+'</td>';
+                        sd_data += '<td id="enabled">'+servicedestination.enabled+'</td>';
+                        sd_data += '</tr>';
+                    });
+
+
+            
+                $('#tableservicedestination tbody').append(sd_data);
+                $('#tableservicedestination').DataTable();
+                   // $( "#tablediv" ).load(window.location.href + "#tablediv" );
+
+                
+
+            
+            },
+            
+            error: function()
+            {
+                
+            }
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   });

@@ -1,0 +1,148 @@
+$(document).ready(function()
+
+    {
+
+//  $('#tablesystem').DataTable();
+
+        $.ajax
+        ({
+           	type:'GET',	
+           	context:this,
+        	url: '/api/systems',
+        	
+        	success: function(systems)
+        	{
+        		//console.log('success', systems);
+        		var system_data='';
+        		$.each(systems,function(key,system)
+        			{
+        				
+        				system_data += '<tr>';
+        				system_data += '<td id="Code">'+system.systemCode+'</td>';
+        				system_data += '<td id="Name">'+system.systemName+'</td>';
+        				system_data += '</tr>';
+        			});
+
+
+        	
+        		$('#tablesystem tbody').append(system_data);
+        		 
+        		    $('#tablesystem').DataTable();       		
+
+       		
+        	},
+        	cache: false,
+        	
+        	error: function()
+        	{
+        		console.log(error);
+        	}
+
+        });
+
+
+
+        $.ajax
+        ({
+            type:'GET', 
+            context:this,
+            url: '/api/domains',
+            //cache: false,
+            success: function(domains)
+            {
+                //console.log('success', domains);
+                var domain_data='';
+                $.each(domains,function(key,domain)
+                    {
+                        
+                        domain_data += '<tr>';
+                        domain_data += '<td id="dId">'+domain.domainId+'</td>';
+                        domain_data += '<td id="dType">'+domain.domainType+'</td>';
+                        domain_data += '<td id="dName">'+domain.domainName+'</td>';
+                        domain_data += '</tr>';
+                    });
+
+
+            
+                $('#tabledomain tbody').append(domain_data);
+                
+                    $('#tabledomain').DataTable();
+                   
+                
+
+            
+            },
+            
+            error: function()
+            {
+                console.log(error);
+            }
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $.ajax
+                    ({
+                        type:'GET', 
+                        context:this,
+                        url: '/api/systemdomains',
+                        
+                        success: function(systemdomains)
+                        {
+                            //console.log('success', systemdomains);
+                            var systemdomain_data='';
+                            $.each(systemdomains,function(key,systemdomain)
+                                {
+                                    
+                                    
+                                    systemdomain_data += '<tr>';
+                                    systemdomain_data += '<td id="sdId">'+systemdomain.systemDomainId+'</td>';
+                                    systemdomain_data += '<td id="sCode">'+systemdomain.systemCode['systemCode']+'</td>';
+                                    systemdomain_data += '<td id="sName">'+systemdomain.systemCode['systemName']+'</td>';
+                                    systemdomain_data += '<td id="dId">'+systemdomain.domainId+'</td>';
+                                    systemdomain_data += '</tr>';
+                                });
+
+
+                        
+                            $('#tablesystemdomain tbody').append(systemdomain_data);
+                              
+                                $('#tablesystemdomain').DataTable();
+
+                            
+
+                        
+                        },
+
+                        //cache:false,
+                        
+                        error: function()
+                        {
+                            console.log(error);
+                        }
+
+                    });
+
+
+
+
+
+
+
+
+
+
+
+   });

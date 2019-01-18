@@ -1,0 +1,124 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+//@Table(name = "ESBCORE_SERVICE_DESTINATION")
+@Table(name = "ESBCORE_SERVICE_DESTINATION", schema="SYS")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreServiceDestination.findAll", query = "SELECT e FROM EsbcoreServiceDestination e")
+    , @NamedQuery(name = "EsbcoreServiceDestination.findByServiceId", query = "SELECT e FROM EsbcoreServiceDestination e WHERE e.serviceId = :serviceId")
+    , @NamedQuery(name = "EsbcoreServiceDestination.findByUri", query = "SELECT e FROM EsbcoreServiceDestination e WHERE e.uri = :uri")
+    , @NamedQuery(name = "EsbcoreServiceDestination.findByName", query = "SELECT e FROM EsbcoreServiceDestination e WHERE e.name = :name")
+    , @NamedQuery(name = "EsbcoreServiceDestination.findByEnabled", query = "SELECT e FROM EsbcoreServiceDestination e WHERE e.enabled = :enabled")})
+public class EsbcoreServiceDestination implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SERVICE_ID")
+    private BigDecimal serviceId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1024)
+    @Column(name = "URI")
+    private String uri;
+    @Size(max = 255)
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "ENABLED")
+    private Short enabled;
+
+    public EsbcoreServiceDestination() {
+    }
+
+    public EsbcoreServiceDestination(BigDecimal serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public EsbcoreServiceDestination(BigDecimal serviceId, String uri) {
+        this.serviceId = serviceId;
+        this.uri = uri;
+    }
+
+    public BigDecimal getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(BigDecimal serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Short getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Short enabled) {
+        this.enabled = enabled;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (serviceId != null ? serviceId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreServiceDestination)) {
+            return false;
+        }
+        EsbcoreServiceDestination other = (EsbcoreServiceDestination) object;
+        if ((this.serviceId == null && other.serviceId != null) || (this.serviceId != null && !this.serviceId.equals(other.serviceId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreServiceDestination[ serviceId=" + serviceId + " ]";
+    }
+    
+}

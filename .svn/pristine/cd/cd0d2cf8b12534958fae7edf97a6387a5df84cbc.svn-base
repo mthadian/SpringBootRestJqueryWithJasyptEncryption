@@ -1,0 +1,165 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_SERVICE_SLA")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreServiceSla.findAll", query = "SELECT e FROM EsbcoreServiceSla e")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceSlaId", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceSlaId = :serviceSlaId")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceAlertLevel", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceAlertLevel = :serviceAlertLevel")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceOwner", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceOwner = :serviceOwner")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceFailThreshold", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceFailThreshold = :serviceFailThreshold")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceReviewPeriod", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceReviewPeriod = :serviceReviewPeriod")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceNextReview", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceNextReview = :serviceNextReview")
+    , @NamedQuery(name = "EsbcoreServiceSla.findByServiceAlertOwner", query = "SELECT e FROM EsbcoreServiceSla e WHERE e.serviceAlertOwner = :serviceAlertOwner")})
+public class EsbcoreServiceSla implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "SERVICE_SLA_ID")
+    private String serviceSlaId;
+    @Size(max = 20)
+    @Column(name = "SERVICE_ALERT_LEVEL")
+    private String serviceAlertLevel;
+    @Size(max = 200)
+    @Column(name = "SERVICE_OWNER")
+    private String serviceOwner;
+    @Size(max = 50)
+    @Column(name = "SERVICE_FAIL_THRESHOLD")
+    private String serviceFailThreshold;
+    @Size(max = 20)
+    @Column(name = "SERVICE_REVIEW_PERIOD")
+    private String serviceReviewPeriod;
+    @Size(max = 50)
+    @Column(name = "SERVICE_NEXT_REVIEW")
+    private String serviceNextReview;
+    @Size(max = 200)
+    @Column(name = "SERVICE_ALERT_OWNER")
+    private String serviceAlertOwner;
+    @JoinColumn(name = "SERVICE_ID", referencedColumnName = "SERVICE_ID")
+    @ManyToOne
+    private EsbcoreService serviceId;
+
+    public EsbcoreServiceSla() {
+    }
+
+    public EsbcoreServiceSla(String serviceSlaId) {
+        this.serviceSlaId = serviceSlaId;
+    }
+
+    public String getServiceSlaId() {
+        return serviceSlaId;
+    }
+
+    public void setServiceSlaId(String serviceSlaId) {
+        this.serviceSlaId = serviceSlaId;
+    }
+
+    public String getServiceAlertLevel() {
+        return serviceAlertLevel;
+    }
+
+    public void setServiceAlertLevel(String serviceAlertLevel) {
+        this.serviceAlertLevel = serviceAlertLevel;
+    }
+
+    public String getServiceOwner() {
+        return serviceOwner;
+    }
+
+    public void setServiceOwner(String serviceOwner) {
+        this.serviceOwner = serviceOwner;
+    }
+
+    public String getServiceFailThreshold() {
+        return serviceFailThreshold;
+    }
+
+    public void setServiceFailThreshold(String serviceFailThreshold) {
+        this.serviceFailThreshold = serviceFailThreshold;
+    }
+
+    public String getServiceReviewPeriod() {
+        return serviceReviewPeriod;
+    }
+
+    public void setServiceReviewPeriod(String serviceReviewPeriod) {
+        this.serviceReviewPeriod = serviceReviewPeriod;
+    }
+
+    public String getServiceNextReview() {
+        return serviceNextReview;
+    }
+
+    public void setServiceNextReview(String serviceNextReview) {
+        this.serviceNextReview = serviceNextReview;
+    }
+
+    public String getServiceAlertOwner() {
+        return serviceAlertOwner;
+    }
+
+    public void setServiceAlertOwner(String serviceAlertOwner) {
+        this.serviceAlertOwner = serviceAlertOwner;
+    }
+
+    public EsbcoreService getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(EsbcoreService serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (serviceSlaId != null ? serviceSlaId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreServiceSla)) {
+            return false;
+        }
+        EsbcoreServiceSla other = (EsbcoreServiceSla) object;
+        if ((this.serviceSlaId == null && other.serviceSlaId != null) || (this.serviceSlaId != null && !this.serviceSlaId.equals(other.serviceSlaId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreServiceSla[ serviceSlaId=" + serviceSlaId + " ]";
+    }
+    
+}

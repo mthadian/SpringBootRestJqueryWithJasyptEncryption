@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/js/jquery.min.js"></script> 
+
+     <script src="/bootstrap/js/bootstrap.min.js"></script> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
+      
+    <script type="text/javascript" src="/js/datatables.min.js"></script> 
+
+       <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+
+     
+        <script src="/javascript/domains.js"></script> 
+       
+
+        
+<meta charset="ISO-8859-1">
+<title>ESB</title>
+</head>
+
+<body>
+
+<div class="float-left" style="width:100%"> 
+   
+      
+                <div class="panel panel-default">
+                <div class="panel-body">
+
+                </div>
+                <div class="panel-footer" id="tablediv">
+
+                         <!--Table-->
+                        <table id="tabledomain" class="table table-hover table-striped table-sm table-bordered" >
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th>DOMAIN ID</th>
+                                <th>DOMAIN TYPE</th>
+                                <th>DOMAIN NAME</th>
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                       
+                     
+                        <tfoot>
+                            <tr>
+                                <th>DOMAIN ID</th>
+                                <th>DOMAIN TYPE</th>
+                                <th>DOMAIN NAME</th>
+                          </tr>
+                            
+
+                        </tfoot>
+                 
+
+                       
+                          
+                          
+
+                        </table>
+
+
+                        <!--Table-->
+                </div>
+                </div>
+              </div>
+
+
+</body>
+</html>

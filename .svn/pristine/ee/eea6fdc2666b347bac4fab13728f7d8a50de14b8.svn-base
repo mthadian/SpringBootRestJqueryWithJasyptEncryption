@@ -1,0 +1,15 @@
+package com.KCB.bank.Repos;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.KCB.bank.models.EsbcoreService;
+
+public interface EsbcoreServiceRepository extends JpaRepository<EsbcoreService, BigDecimal>
+{
+	List<EsbcoreService> findByServiceIdAndSystemDomainId(BigDecimal serviceId, BigInteger systemDomainId);
+
+}

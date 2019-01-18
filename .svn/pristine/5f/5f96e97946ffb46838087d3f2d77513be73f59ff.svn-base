@@ -1,0 +1,274 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_IB_SERVICES")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreIbServices.findAll", query = "SELECT e FROM EsbcoreIbServices e")
+    , @NamedQuery(name = "EsbcoreIbServices.findById", query = "SELECT e FROM EsbcoreIbServices e WHERE e.id = :id")
+    , @NamedQuery(name = "EsbcoreIbServices.findByServicecode", query = "SELECT e FROM EsbcoreIbServices e WHERE e.servicecode = :servicecode")
+    , @NamedQuery(name = "EsbcoreIbServices.findByTargeturl", query = "SELECT e FROM EsbcoreIbServices e WHERE e.targeturl = :targeturl")
+    , @NamedQuery(name = "EsbcoreIbServices.findByDescription", query = "SELECT e FROM EsbcoreIbServices e WHERE e.description = :description")
+    , @NamedQuery(name = "EsbcoreIbServices.findByPort", query = "SELECT e FROM EsbcoreIbServices e WHERE e.port = :port")
+    , @NamedQuery(name = "EsbcoreIbServices.findByTimeout", query = "SELECT e FROM EsbcoreIbServices e WHERE e.timeout = :timeout")
+    , @NamedQuery(name = "EsbcoreIbServices.findByTargetprotocol", query = "SELECT e FROM EsbcoreIbServices e WHERE e.targetprotocol = :targetprotocol")
+    , @NamedQuery(name = "EsbcoreIbServices.findByTargetsystem", query = "SELECT e FROM EsbcoreIbServices e WHERE e.targetsystem = :targetsystem")
+    , @NamedQuery(name = "EsbcoreIbServices.findByXslreq", query = "SELECT e FROM EsbcoreIbServices e WHERE e.xslreq = :xslreq")
+    , @NamedQuery(name = "EsbcoreIbServices.findByXslres", query = "SELECT e FROM EsbcoreIbServices e WHERE e.xslres = :xslres")
+    , @NamedQuery(name = "EsbcoreIbServices.findByServiceid", query = "SELECT e FROM EsbcoreIbServices e WHERE e.serviceid = :serviceid")
+    , @NamedQuery(name = "EsbcoreIbServices.findBySamplerequest", query = "SELECT e FROM EsbcoreIbServices e WHERE e.samplerequest = :samplerequest")
+    , @NamedQuery(name = "EsbcoreIbServices.findBySampleresponse", query = "SELECT e FROM EsbcoreIbServices e WHERE e.sampleresponse = :sampleresponse")
+    , @NamedQuery(name = "EsbcoreIbServices.findByParser", query = "SELECT e FROM EsbcoreIbServices e WHERE e.parser = :parser")
+    , @NamedQuery(name = "EsbcoreIbServices.findByIp", query = "SELECT e FROM EsbcoreIbServices e WHERE e.ip = :ip")})
+public class EsbcoreIbServices implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ID")
+    private BigDecimal id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "SERVICECODE")
+    private String servicecode;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "TARGETURL")
+    private String targeturl;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1000)
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "PORT")
+    private String port;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "TIMEOUT")
+    private String timeout;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "TARGETPROTOCOL")
+    private String targetprotocol;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "TARGETSYSTEM")
+    private String targetsystem;
+    @Size(max = 250)
+    @Column(name = "XSLREQ")
+    private String xslreq;
+    @Size(max = 250)
+    @Column(name = "XSLRES")
+    private String xslres;
+    @Size(max = 20)
+    @Column(name = "SERVICEID")
+    private String serviceid;
+    @Size(max = 4000)
+    @Column(name = "SAMPLEREQUEST")
+    private String samplerequest;
+    @Size(max = 4000)
+    @Column(name = "SAMPLERESPONSE")
+    private String sampleresponse;
+    @Size(max = 4000)
+    @Column(name = "PARSER")
+    private String parser;
+    @Size(max = 250)
+    @Column(name = "IP")
+    private String ip;
+
+    public EsbcoreIbServices() {
+    }
+
+    public EsbcoreIbServices(BigDecimal id) {
+        this.id = id;
+    }
+
+    public EsbcoreIbServices(BigDecimal id, String servicecode, String targeturl, String description, String port, String timeout, String targetprotocol, String targetsystem) {
+        this.id = id;
+        this.servicecode = servicecode;
+        this.targeturl = targeturl;
+        this.description = description;
+        this.port = port;
+        this.timeout = timeout;
+        this.targetprotocol = targetprotocol;
+        this.targetsystem = targetsystem;
+    }
+
+    public BigDecimal getId() {
+        return id;
+    }
+
+    public void setId(BigDecimal id) {
+        this.id = id;
+    }
+
+    public String getServicecode() {
+        return servicecode;
+    }
+
+    public void setServicecode(String servicecode) {
+        this.servicecode = servicecode;
+    }
+
+    public String getTargeturl() {
+        return targeturl;
+    }
+
+    public void setTargeturl(String targeturl) {
+        this.targeturl = targeturl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(String timeout) {
+        this.timeout = timeout;
+    }
+
+    public String getTargetprotocol() {
+        return targetprotocol;
+    }
+
+    public void setTargetprotocol(String targetprotocol) {
+        this.targetprotocol = targetprotocol;
+    }
+
+    public String getTargetsystem() {
+        return targetsystem;
+    }
+
+    public void setTargetsystem(String targetsystem) {
+        this.targetsystem = targetsystem;
+    }
+
+    public String getXslreq() {
+        return xslreq;
+    }
+
+    public void setXslreq(String xslreq) {
+        this.xslreq = xslreq;
+    }
+
+    public String getXslres() {
+        return xslres;
+    }
+
+    public void setXslres(String xslres) {
+        this.xslres = xslres;
+    }
+
+    public String getServiceid() {
+        return serviceid;
+    }
+
+    public void setServiceid(String serviceid) {
+        this.serviceid = serviceid;
+    }
+
+    public String getSamplerequest() {
+        return samplerequest;
+    }
+
+    public void setSamplerequest(String samplerequest) {
+        this.samplerequest = samplerequest;
+    }
+
+    public String getSampleresponse() {
+        return sampleresponse;
+    }
+
+    public void setSampleresponse(String sampleresponse) {
+        this.sampleresponse = sampleresponse;
+    }
+
+    public String getParser() {
+        return parser;
+    }
+
+    public void setParser(String parser) {
+        this.parser = parser;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreIbServices)) {
+            return false;
+        }
+        EsbcoreIbServices other = (EsbcoreIbServices) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreIbServices[ id=" + id + " ]";
+    }
+    
+}

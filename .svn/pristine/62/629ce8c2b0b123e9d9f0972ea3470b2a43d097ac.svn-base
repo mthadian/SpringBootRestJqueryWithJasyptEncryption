@@ -1,0 +1,186 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_REPUBLISHING")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreRepublishing.findAll", query = "SELECT e FROM EsbcoreRepublishing e")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByMessageId", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.messageId = :messageId")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByServiceId", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.serviceId = :serviceId")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByServiceName", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.serviceName = :serviceName")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByOperation", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.operation = :operation")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByVersion", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.version = :version")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByQueue", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.queue = :queue")
+    , @NamedQuery(name = "EsbcoreRepublishing.findByDateStore", query = "SELECT e FROM EsbcoreRepublishing e WHERE e.dateStore = :dateStore")})
+public class EsbcoreRepublishing implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "MESSAGE_ID")
+    private String messageId;
+    @Column(name = "SERVICE_ID")
+    private BigInteger serviceId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "SERVICE_NAME")
+    private String serviceName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "OPERATION")
+    private String operation;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "VERSION")
+    private String version;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "QUEUE")
+    private String queue;
+    @Column(name = "DATE_STORE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateStore;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "MESSAGE")
+    private Serializable message;
+
+    public EsbcoreRepublishing() {
+    }
+
+    public EsbcoreRepublishing(String messageId) {
+        this.messageId = messageId;
+    }
+
+    public EsbcoreRepublishing(String messageId, String serviceName, String operation, String version, String queue, Serializable message) {
+        this.messageId = messageId;
+        this.serviceName = serviceName;
+        this.operation = operation;
+        this.version = version;
+        this.queue = queue;
+        this.message = message;
+    }
+
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
+    public BigInteger getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(BigInteger serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getQueue() {
+        return queue;
+    }
+
+    public void setQueue(String queue) {
+        this.queue = queue;
+    }
+
+    public Date getDateStore() {
+        return dateStore;
+    }
+
+    public void setDateStore(Date dateStore) {
+        this.dateStore = dateStore;
+    }
+
+    public Serializable getMessage() {
+        return message;
+    }
+
+    public void setMessage(Serializable message) {
+        this.message = message;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (messageId != null ? messageId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreRepublishing)) {
+            return false;
+        }
+        EsbcoreRepublishing other = (EsbcoreRepublishing) object;
+        if ((this.messageId == null && other.messageId != null) || (this.messageId != null && !this.messageId.equals(other.messageId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreRepublishing[ messageId=" + messageId + " ]";
+    }
+    
+}

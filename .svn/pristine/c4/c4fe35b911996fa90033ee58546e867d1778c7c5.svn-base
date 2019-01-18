@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+ <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'> -->
+    <!--
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+    <script src="/js/getcustomers.js"></script> -->
+   
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="/js/jquery.min.js"></script> 
+   
+    
+
+     
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+     <script src="/bootstrap/js/bootstrap.min.js"></script> 
+
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
+      
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap337.min.css"/>
+
+ 
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.18/b-1.5.4/r-2.2.2/datatables.min.js"></script> -->
+    <script type="text/javascript" src="/js/datatables.min.js"></script> 
+    
+       <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.18/b-1.5.4/r-2.2.2/datatables.min.css"/> -->
+       <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+
+         <link rel="stylesheet" type="text/css" href="/css/bootstable.css"/>
+
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"> -->
+        <link rel="stylesheet" href="/css/jquery-confirm.min.css">
+
+
+         
+       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script> -->
+       <script src="/js/jquery-confirm.min.js"></script>
+
+
+        <script src="/js/bootstable.js"></script>
+        <link rel="stylesheet" href="/css/jquery.inputpicker.css" />
+        <script src="/js/jquery.inputpicker.js"></script>
+
+
+
+
+      <script src="/javascript/rule.js"></script>        
+
+        
+<meta charset="ISO-8859-1">
+<title>ESB</title>
+</head>
+<body>
+<div class="float-right" style="width:100%"> 
+      
+
+        <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-inline">
+                        <label for="ruleid">RULE ID</label><br/>
+                         <input type="text" class="form-control mb-2 mr-sm-2" id="ruleid" placeholder="RULE ID"/><br/>
+
+                         <label for="selectservice">SERVICE</label><br/>                
+                          <input class="form-control mb-2 mr-sm-2" id="selectservice" style="width:40%" placeholder="SELECT SERVICE" />
+                          <br/>
+
+                          <label for="ruleorder">RULE ORDER</label><br/>
+                         <input type="text" class="form-control mb-2 mr-sm-2" id="ruleorder" placeholder="RULE ORDER"/><br/>
+                
+
+
+                            <button type="submit" class="btn btn-primary mb-2" id="saverule">SAVE</button>
+
+                    </form>
+
+
+        </div>
+        <div class="panel-footer">
+
+             <!--Table-->
+                        <table id="tablerule" class="table table-hover table-striped table-sm table-bordered">
+                        <!--Table head-->
+                       <thead>
+                            <tr>
+                                <th>RULE ID</th>
+                                <th>SERVICE ID</th>
+                                <th>SERVICE NAME</th> 
+                                <th>RULE ORDER</th>
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                        <!--Table body-->
+                        </table>
+                        <!--Table-->
+        </div>
+        </div>
+       
+      
+  </div>
+
+
+ 
+
+
+</body>
+</html>

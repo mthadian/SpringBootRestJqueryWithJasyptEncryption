@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/js/jquery.min.js"></script> 
+      <script src="/bootstrap/js/bootstrap.min.js"></script> 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+      <script type="text/javascript" src="/js/datatables.min.js"></script> 
+      <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+
+
+        
+
+      <script src="/javascript/sysdomhome.js"></script>
+      <link rel="stylesheet" type="text/css" href="/css/iframe.css"/>
+      <script src="/js/collapse.js"></script> 
+      <link rel="stylesheet" type="text/css" href="/css/collapse.css"/>
+        
+
+
+
+      
+<meta charset="ISO-8859-1">
+<title>ESB</title>
+</head>
+<body>
+ <!-- <div id="header"></div>-->
+ <!--
+  <div th:insert="header">...</div>
+    <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+-->
+  
+
+
+<div class="accordion">
+  <div class="accordion-header">SYSTEM</div>
+  <div class="accordion-content">
+    <div class="card border-success mb-3">
+    <div class="float-right"> 
+
+    <div class="card-body">
+     <!-- <div class="card-body  align-items-center d-flex justify-content-center">-->
+      <h3 class="card-title">SYSTEM</h3>
+      <!--
+      <div class="iframe-container-long">
+          <iframe src="system" allowfullscreen></iframe>
+        </div>
+      -->
+      <!--<iframe src="/systemdomain" frameborder="0" scrolling="auto" width="1200"" height="910"></iframe> -->
+      <div class="float-left" style="width:100%"> 
+
+  
+
+   
+
+        <div class="panel panel-default">
+        <div class="panel-body">
+          
+
+        </div>
+        <div class="panel-footer">
+
+             <!--Table-->
+                        <table id="tablesystem" class="table table-hover table-striped table-sm table-bordered">
+                        <!--Table head-->
+                       <thead>
+                            <tr>
+                                <th>SYSTEM ID</th>
+                                <th>SYSTEM NAME</th>
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                        <!--Table body-->
+                        </table>
+                        <!--Table-->
+        </div>
+        </div>
+    
+       
+          
+     
+
+
+</div>
+
+
+      
+    </div>
+  </div>
+  </div>
+    
+  </div>
+
+  <div class="accordion-header">DOMAIN</div>
+  <div class="accordion-content">
+    <div class="card border-success mb-3">
+    <div class="float-right"> 
+
+    <div class="card-body">
+     <!-- <div class="card-body  align-items-center d-flex justify-content-center">
+      <h3 class="card-title">DOMAIN</h3>
+      <div class="iframe-container-long">
+          <iframe src="domain" allowfullscreen></iframe>
+        </div>
+     <iframe src="/systemdomain" frameborder="0" scrolling="auto" width="1200"" height="910"></iframe> -->
+     <div class="float-left" style="width:100%"> 
+   
+      
+                <div class="panel panel-default">
+                <div class="panel-body">
+
+                </div>
+                <div class="panel-footer" id="tablediv">
+
+                         <!--Table-->
+                        <table id="tabledomain" class="table table-hover table-striped table-sm table-bordered" >
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th>DOMAIN ID</th>
+                                <th>DOMAIN TYPE</th>
+                                <th>DOMAIN NAME</th>
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                       
+                     
+                        <tfoot>
+                            <tr>
+                                <th>DOMAIN ID</th>
+                                <th>DOMAIN TYPE</th>
+                                <th>DOMAIN NAME</th>
+                          </tr>
+                            
+
+                        </tfoot>
+                 
+
+                       
+                          
+                          
+
+                        </table>
+
+
+                        <!--Table-->
+                </div>
+                </div>
+              </div>
+   
+      
+    </div>
+    </div>
+  </div>
+    
+  </div>
+
+  <div class="accordion-header">SYSTEM DOMAIN</div>
+  <div class="accordion-content">
+     <div class="card border-success mb-3">
+    <div class="float-right"> 
+
+    <div class="card-body">
+     <!-- <div class="card-body  align-items-center d-flex justify-content-center">-->
+      <h3 class="card-title">SYSTEM DOMAIN</h3>
+      <!--
+      <div class="iframe-container-long">
+          <iframe src="systemdomain" allowfullscreen></iframe>
+        </div>-->
+      <!--<iframe src="/systemdomain" frameborder="0" scrolling="auto" width="1200"" height="910"></iframe> -->
+      <div class="float-right" style="width:100%"> 
+      
+
+        <div class="panel panel-default">
+        <div class="panel-body">
+           
+       </div>
+        <div class="panel-footer">
+
+             <!--Table-->
+                        <table id="tablesystemdomain" class="table table-hover table-striped table-sm table-bordered">
+                        <!--Table head-->
+                       <thead>
+                            <tr>
+                                <th>SYSTEM DOMAIN ID</th>
+                                <th>SYSTEM CODE</th>
+                                <th>SYSTEM NAME</th> 
+                                <th>DOMAIN ID</th>
+                                 
+                          </tr>
+                        </thead>
+                          <tbody></tbody>
+                        <!--Table body-->
+                        </table>
+                        <!--Table-->
+        </div>
+        </div>
+       
+      
+  </div>
+      
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+  
+</body>
+</html>

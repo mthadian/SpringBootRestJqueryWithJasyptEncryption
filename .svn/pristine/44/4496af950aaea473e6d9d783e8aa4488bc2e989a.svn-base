@@ -1,0 +1,11 @@
+package com.KCB.bank.Repos;
+
+import java.math.BigDecimal;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.KCB.bank.models.EsbcoreRuleCondition;
+
+public interface EsbcoreRuleConditionRepository extends JpaRepository<EsbcoreRuleCondition, BigDecimal>{
+
+}

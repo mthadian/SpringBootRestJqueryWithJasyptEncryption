@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Service</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+
+
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<link href="esbhome/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
+        <link rel="stylesheet" href="/jquerysteps/css/normalize.css">
+        <link rel="stylesheet" href="/jquerysteps/css/main.css">
+        <link rel="stylesheet" href="/jquerysteps/css/jquery.steps.css">
+        <script src="/jquerysteps/js/modernizr-2.6.2.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        <script src="/jquerysteps/js/jquery.cookie-1.3.1.js"></script>
+        <script src="/jquerysteps/js/jquery.steps.js"></script>
+
+       
+
+        <link rel="stylesheet" href="/css/jquery.inputpicker.css" />
+        <script src="/js/jquery.inputpicker.js"></script>
+
+         <script src="/javascript/newservice.js"></script>
+        <script src="/javascript/newsysdomandsysdom.js"></script>
+
+        <link rel="stylesheet" href="/css/customizemodal.css">
+
+
+     
+    
+    </head>
+    <body>
+     
+        <!--Restrict this buttons for admins only -->
+
+     <div sec:authorize="hasRole('ROLE_ADMIN')">
+
+    <div class="d-flex justify-content-center">  
+      
+     
+
+      
+           
+      
+       <button type="button" class="btn btn-lgbtn-outline-secondary fas fa-plus" id="btnnewdomain" data-toggle="modal" data-target="#domainModal" style="margin:5px;">New Domain</button>
+
+     
+
+     <button type="button" class="btn btn-lgbtn-outline-secondary fas fa-plus" id="btnnewsystem" data-toggle="modal" data-target="#systemModal" style="margin:5px;">New System</button>
+
+     <button type="button" class="btn btn-lgbtn-outline-secondary fas fa-plus" id="btnnewsysdom" data-toggle="modal" data-target="#sysdomModal" style="margin:5px;">New SystemDomain</button>
+
+     </div>
+
+     </div>
+
+     <br/>
+
+    
+          
+    <div class="d-flex justify-content-center">  
+      
+       <button type="button" class="btn btn-lgbtn-outline-secondary fas fa-plus" id="btnnewservice" data-toggle="modal" data-target="#serviceModal">New Service</button>
+
+     </div>
+
+     
+      
+
+        <div class="content">
+         
+
+        <div class="modal fade"  id="sysdomModal" tabindex="-1" role="dialog" aria-labelledby="sysdomModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="sysdomModalLabel">New System Domain</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div id="systemdomainerror" style="color:red"></div>
+                <div class="modal-body">
+                  
+                  <div class="form-row align-items-center" >
+                  
+                           <div class="col-auto my-1">
+                            <label class="mr-sm-2" for="selectsystem">SELECT SYSTEM</label>
+                            
+                            <input id="selectsystem"  name="selectsystem" type="text" class="form-control mr-sm-2 required select">
+                          </div>
+
+                          <div class="col-auto my-1">
+                            <label class="mr-sm-2" for="selectdomain">SELECT DOMAIN</label>
+                            
+                            <input id="selectdomain"  name="selectdomain" type="text" class="form-control mr-sm-2 required select">
+                          </div>
+
+                  </div>
+
+                
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="savesysdom" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+       
+
+       
+
+          <div class="modal fade" id="systemModal" tabindex="-1" role="dialog" aria-labelledby="systemModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="systemModalLabel">New System</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                  <div id="systemerror" style="color:red"></div>
+                  <div class="form-row align-items-center">
+                  
+                           <div class="col-auto my-1">
+                            <label class="mr-sm-2" for="systemname">SYSTEM NAME</label>
+                            
+                            <input id="systemname"  name="systemname" style="width:90%" type="text" class="form-control mr-sm-2 required">
+                          </div>
+
+                  </div>
+                  
+
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="savesystem" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+           <div class="modal fade" id="domainModal" tabindex="-1" role="dialog" aria-labelledby="domainModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="domainModalLabel">New Domain</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+
+                 
+                    <div class="form-row align-items-center">
+                  
+                           <div class="col-auto my-1">
+                            <label class="mr-sm-2" for="domainname">DOMAIN NAME</label>
+                            
+                            <input id="domainname"  name="domainname" type="text" class="form-control mr-sm-2 required">
+                          </div>
+                           <div class="col-auto my-1">
+                            <label class="mr-sm-2" for="domainType">DOMAIN TYPE</label>
+                            <select class="custom-select mr-sm-2 required" id="domainType">
+                              <option value="" disabled selected>Choose...</option>
+                              <option>B</option>
+                              <option>T</option>
+                              
+                            </select>
+                          </div>
+
+                          
+
+                  </div>
+                  <div id="domainerror" style="color:red"></div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="savedomain" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+            <!--DOMAIN MODAL ENDS HERE-->
+           
+      <div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="serviceModalLabel">New Service</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+             
+                
+      <form id="form_new_service">
+        <!--service start-->
+        
+        <h3>SERVICE</h3>
+        <fieldset>
+          <legend>SERVICE</legend>
+          
+  
+ 
+
+
+
+            <div class="card">
+            <b><div class="card-header">Business</div></b>
+            <div class="card-body">
+              <p class="card-text">
+                <div id="sysdomid_B"></div>
+               <div class="form-row align-items-center">
+               
+                  <div class="col-auto my-1">
+                      <label class="mr-sm-2" for="selectsystem_B">SELECT SYSTEM*</label>
+                      
+                      <input id="selectsystem_B"  name="selectsystem_B" type="text" class="form-control mr-sm-2 required select">
+                    </div>
+
+
+                    <div class="col-auto my-1">
+                      <label class="mr-sm-2" for="selectdomain_B">SELECT DOMAIN*</label>
+                      
+                      <input id="selectdomain_B"  name="selectdomain_B" type="text" class="form-control mr-sm-2 required select">
+                   </div>
+
+                   <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="servicename_B">SERVICE NAME*</label>
+                    
+                    <input id="servicename_B"  name="servicename_B" type="text" class="form-control mr-sm-2 required" placeholder="SERVICE NAME">
+                  </div>
+
+                 <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="operation_B">OPERATION*</label>
+                    
+                    <input id="operation_B"  name="operation_B" type="text" class="form-control mr-sm-2 required bus" placeholder="OPERATION">
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="servicetype_B">SERVICE TYPE</label>
+                    <select class="custom-select mr-sm-2 required bus" id="servicetype_B">
+                      <option value="" disabled selected>Choose...</option>
+                      <option>SOAP</option>
+                      <option>SMTP</option>
+                      <option>MQ</option>
+                      <option>SQL</option>
+                      <option>HTTP</option>
+                    </select>
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="timeout_B">TIMEOUT</label>
+                    
+                    <input id="timeout_B"  name="timeout_B" type="text" class="form-control mr-sm-2 number required" placeholder="TIMEOUT(in s)">
+                  </div>
+
+
+
+
+
+
+
+                </div>
+
+                
+
+
+              </p>
+              
+            </div>
+          </div>
+          <br/>
+
+
+          <!--Business card end-->
+
+          <div class="card">
+          <b><div class="card-header">Technical</div></b>
+          <div class="card-body">
+            <p class="card-text">
+              <div id="sysdomid_T"></div>
+              <div class="form-row align-items-center">
+              <!--
+
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="systemdomainid_T">SYSDOMAIN ID*</label>
+                    
+                    <input id="systemdomainid_T"  name="systemdomainid_T" type="text" class="form-control mr-sm-2 required" placeholder="SYSDOMAIN ID">
+                 </div>
+               -->
+                 <div class="col-auto my-1">
+                      <label class="mr-sm-2" for="selectsystem_T">SELECT SYSTEM*</label>
+                      
+                      <input id="selectsystem_T"  name="selectsystem_T" type="text" class="form-control mr-sm-2 required select">
+                    </div>
+
+                    <div class="col-auto my-1">
+                      <label class="mr-sm-2" for="selectdomain_T">SELECT DOMAIN*</label>
+                      
+                      <input id="selectdomain_T"  name="selectdomain_T" type="text" class="form-control mr-sm-2 required select">
+                   </div>
+
+                   <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="servicename_T">SERVICE NAME*</label>
+                    
+                    <input id="servicename_T"  name="servicename_T" type="text" class="form-control mr-sm-2 required" placeholder="SERVICE NAME">
+                  </div>
+
+                 <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="operation_T">OPERATION*</label>
+                    
+                    <input id="operation_T"  name="operation_T" type="text" class="form-control mr-sm-2 required tech" placeholder="OPERATION">
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="servicetype_T">SERVICE TYPE</label>
+                    <select class="custom-select mr-sm-2 required tech" id="servicetype_T">
+                      <option value="" disabled selected>Choose...</option>
+                      <option>SOAP</option>
+                      <option>SMTP</option>
+                      <option>MQ</option>
+                      <option>SQL</option>
+                      <option>HTTP</option>
+                    </select>
+                  </div>
+
+                  <div class="col-auto my-1">
+                    <label class="mr-sm-2" for="timeout_T">TIMEOUT</label>
+                    
+                    <input id="timeout_T"  name="timeout_T" type="text" class="form-control mr-sm-2 number required" placeholder="TIMEOUT(in s)">
+                  </div>
+
+
+
+
+
+                </div>
+
+
+
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+        <!--Technical card end-->
+                  <div class="card">
+          <b><div class="card-header">General</div></b>
+          <div class="card-body">
+            <p class="card-text">
+               <div class="form-row align-items-center">
+           
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="servicecode">SERVICE CODE</label>
+                
+                <input id="servicecode"  name="servicecode" type="text" class="form-control mr-sm-2" placeholder="SERVICE CODE">
+              </div>
+              <!--
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="servicename">SERVICE NAME*</label>
+                
+                <input id="servicename"  name="servicename" type="text" class="form-control mr-sm-2 required" placeholder="SERVICE NAME">
+              </div>
+            -->
+              
+              
+              
+
+              
+               <div class="col-auto my-1">
+                <label for="version">VERSION*</label>
+                
+                <input id="version"  name="version" type="text" class="form-control mr-sm-2 required" placeholder="e.g 1.0">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="sync">SYNC</label>
+                <select class="custom-select mr-sm-2" id="sync">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="loglevel">LOG LEVEL*</label>
+                
+                <input id="loglevel"  name="loglevel" type="text" class="form-control mr-sm-2 required" placeholder="e.g DEBUG">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="dupcheck">DUPLICATE CHECK</label>
+                <select class="custom-select mr-sm-2 required" id="dupcheck">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="genreply">GENERIC REPLY</label>
+                <select class="custom-select mr-sm-2 required" id="genreply">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+              
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="retrymax">RETRY MAX</label>
+                
+                <input id="retrymax"  name="retrymax" type="text" class="form-control mr-sm-2 number" placeholder="RETRYMAX">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="retryinterval">RETRY INTERVAL</label>
+                
+                <input id="retryinterval"  name="retryinterval" type="text" class="form-control mr-sm-2 number" placeholder="RETRY INTERVAL">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="prjrlscode">PRJ RELEASE CODE</label>
+                
+                <input id="prjrlscode"  name="prjrlscode" type="text" class="form-control mr-sm-2" placeholder="RELEASE CODE">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="emailalertgroup">EMAIL ALERT GROUP</label>
+                
+                <input id="emailalertgroup"  name="emailalertgroup" type="text" class="form-control mr-sm-2" placeholder="EMAIL ALERT GROUP">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="smsalertgroup">SMS ALERT GROUP</label>
+                
+                <input id="smsalertgroup"  name="smsalertgroup" type="text" class="form-control mr-sm-2" placeholder="SMS ALERT GROUP">
+              </div>
+
+               <div class="col-auto my-1">
+                <label class="mr-sm-2" for="emailalertflag">EMAIL ALERT FLAG</label>
+                <select class="custom-select mr-sm-2 required" id="emailalertflag">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="smsalertflag">SMS ALERT FLAG</label>
+                <select class="custom-select mr-sm-2 required" id="smsalertflag">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+
+
+           </div>
+
+           
+
+
+
+            </p>
+            
+          </div>
+
+
+          
+       
+          
+
+          
+          
+        </fieldset>
+        <!--service end-->
+
+
+
+
+
+        <!--rule start-->
+       <h3>RULE</h3>
+        <fieldset>
+          <legend>RULE</legend>
+          <div id="txtserviceid_B"></div>
+          <div id="txtruleid"></div>
+      
+          <div class="form-row align-items-center">
+         
+
+               <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleorder">RULE ORDER</label>
+                
+                <input id="ruleorder"  name="ruleorder" type="text" class="form-control mr-sm-2 required number" placeholder="RULE ORDER">
+              </div>
+
+
+
+          </div>
+          
+         
+        </fieldset>
+
+        <!--rule end-->
+
+
+      <!--rulecondition start-->
+       <h3>RULE CONDITION</h3>
+        <fieldset>
+          <legend>RULE CONDITION</legend>
+
+         <!-- <div id="txtruleid"></div>-->
+          <div id="txtrulecondid"></div>
+          <br/>
+      
+          <div class="form-row align-items-center">
+           
+            <!--
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleconid">RULE CONDITION ID</label>
+                
+                <input id="ruleconid"  name="ruleconid" type="text" class="form-control mr-sm-2 required number" placeholder="RULE CONDITION ID">
+              </div> -->
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleconorder">RULE CONDITION ORDER</label>
+                
+                <input id="ruleconorder"  name="ruleconorder" type="text" class="form-control mr-sm-2 required number" placeholder="RULE CONDITION ORDER">
+              </div>
+
+               <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleconfieldoperation">FIELD OPERATION</label>
+                
+                <input id="ruleconfieldoperation"  name="ruleconfieldoperation" type="text" class="form-control mr-sm-2 required" placeholder="FIELD OPERATION">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleconfieldname">FIELD NAME</label>
+                
+                <input id="ruleconfieldname"  name="ruleconfieldname" type="text" class="form-control mr-sm-2 required" placeholder="FIELD NAME">
+              </div>
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruleconfieldvalue">FIELD VALUE</label>
+                
+                <input id="ruleconfieldvalue"  name="ruleconfieldvalue" type="text" class="form-control mr-sm-2 required" placeholder="FIELD VALUE">
+              </div>
+
+
+
+
+
+          </div>
+          
+         
+        </fieldset>
+
+        <!--rulecondtion end-->
+
+
+        <!--ruledestination start-->
+       <h3>RULE DESTINATION</h3>
+        <fieldset>
+          <legend>RULE DESTINATION</legend>
+
+          <div id="txtruledestid"></div>
+      
+          <div class="form-row align-items-center">
+            <!--
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="ruledestid">RULE DESTINATION ID</label>
+                
+                <input id="ruledestid"  name="ruledestid" type="text" class="form-control mr-sm-2 required number" placeholder="RULE DESTINATION ID">
+              </div>
+            -->
+
+
+          </div>
+          
+         
+        </fieldset>
+
+        <!--ruledestination end-->
+
+
+
+       <!--servicedestination start-->
+        <h3>SERVICE DESTINATION</h3>
+        <fieldset>
+          <div id="txtserviceid_T"></div>
+          <legend>SERVICE DESTINATION</legend>
+       
+          <label for="servicedestination_uri">URI*</label>
+          <input id="servicedestination_uri" name="servicedestination_uri" type="text" class="form-control mb-2 mr-sm-2 required">
+          <div class="form-row align-items-center">
+            <!--
+            <div class="col-auto my-1">
+                <label class="mr-sm-2" for="servicedestinationid">SERVICE DESTINATION ID</label>
+                
+                <input id="servicedestinationid"  name="servicedestinationid" type="text" class="form-control mr-sm-2 required number" placeholder="SD ID">
+              </div> -->
+              <!--
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="servicedestinationname">SERVICE NAME</label>
+                
+                <input id="servicedestinationname"  name="servicedestinationname" type="text" class="form-control mr-sm-2" placeholder="SERVICE NAME">
+              </div>
+            -->
+
+              <div class="col-auto my-1">
+                <label class="mr-sm-2" for="servicedestination_enabled">ENABLED</label>
+                <select class="custom-select mr-sm-2 required" id="servicedestination_enabled">
+                  <option value="" disabled selected>Choose...</option>
+                  <option>1</option>
+                  <option>0</option>
+                  
+                </select>
+              </div>
+
+          </div>
+          
+         
+        </fieldset>
+        <!--servicedestination end-->
+
+
+
+       
+        
+       
+        <h3>SUMMARY</h3>
+        <fieldset>
+        
+        <div class="card">
+          <b><div class="card-header">SERVICE</div></b>
+          <div class="card-body">
+
+           
+            <p class="card-text">
+
+                          <div class="row">
+              
+                          <div class="col-md-4">  
+                              <div class="panel">
+                                   <h4> <div class="panel-heading">Business</div></h4>
+                                    <div class="panel-body">
+                                      <div style="display: inline-block;float:left; margin: 1%;">
+                                       <div id="txtservicename_sum_B"></div>
+                                    </div>
+                                      
+                                        <div style="display: inline-block;float:left; margin: 1%;">
+                                           <div id="txtservicetype_sum_B"></div>
+                                        </div>
+
+                                        <div style="display: inline-block;float:left; margin: 1%;">
+                                           <div id="txtsysdom_sum_B"></div>
+                                        </div>
+
+                                        <div style="display: inline-block;float:left; margin: 1%;">
+                                           <div id="txtserviceoper_sum_B"></div>
+                                        </div>
+
+                                         <div style="display: inline-block;float:left; margin: 1%;">
+                                           <div id="txtservicetimeout_sum_B"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                        </div>
+                          
+                          
+                      </div>
+
+                      <div class="row">
+              
+                          <div class="col-md-4">  
+                              <div class="panel">
+                                   <h4> <div class="panel-heading">Technical</div></h4>
+                                    <div class="panel-body">
+                                      <div style="display: inline-block;float:left; margin: 1%;">
+                                       <div id="txtservicename_sum_T"></div>
+                                    </div>
+                                      
+
+                                      <div style="display: inline-block;float:left; margin: 1%;">
+                                         <div id="txtservicetype_sum_T"></div>
+                                      </div>
+
+                                      <div style="display: inline-block;float:left; margin: 1%;">
+                                         <div id="txtsysdom_sum_T"></div>
+                                      </div>
+
+                                      <div style="display: inline-block;float:left; margin: 1%;">
+                                         <div id="txtserviceoper_sum_T"></div>
+                                      </div>
+
+                                       <div style="display: inline-block;float:left; margin: 1%;">
+                                         <div id="txtservicetimeout_sum_T"></div>
+                                      </div>
+                                    </div>
+                                </div>
+                        </div>
+                          
+                          
+                      </div>
+                       <div class="row">
+              
+                                <div class="col-md-4">  
+                                      <div class="panel">
+                                           <h4> <div class="panel-heading">General</div></h4>
+                                          
+                                   
+
+                                    
+
+                                    
+
+                                    <div style="display: inline-block;float:left; margin: 1%;">
+                                       <div id="txtserviceversion_sum"></div>
+                                    </div>
+
+                                    <div style="display: inline-block;float:left; margin: 1%;">
+                                       <div id="txtservicesync_sum"></div>
+                                    </div>
+
+                                </div>
+                        </div>
+                          
+                          
+                      </div>
+
+    
+
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+
+        <div class="card">
+          <b><div class="card-header">RULE</div></b>
+          <div class="card-body">
+            <p class="card-text">
+             
+
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtruleorder_sum"></div>
+                </div>
+
+
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+
+        <div class="card">
+          <b><div class="card-header">RULE CONDITION</div></b>
+          <div class="card-body">
+            <p class="card-text">
+              
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtruleconorder_sum"></div>
+                </div>
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtruleconfieldoper_sum"></div>
+                </div>
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtruleconfieldname_sum"></div>
+                </div>
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtruleconfieldvalue_sum"></div>
+                </div>
+
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+
+        <div class="card">
+          <b><div class="card-header">RULE DESTINATION</div></b>
+          <div class="card-body">
+            <p class="card-text">
+              <div id="txtruledestid_sum"></div>
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+        <div class="card">
+          <b><div class="card-header">SERVICE DESTINATION</div></b>
+          <div class="card-body">
+            <p class="card-text">
+
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtservicedestname_sum"></div>
+                </div>
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtservicedestenabled_sum"></div>
+                </div>
+                <div style="display: inline-block;float:left; margin: 1%;">
+                   <div id="txtservicedesturl_sum"></div>
+                </div>
+             
+            </p>
+            
+          </div>
+        </div>
+        <br/>
+        <div id="txt_allservice_error" style="color:red"></div>
+        <div id="current_user"> <span sec:authentication="name">Bob</span> </div> 
+          
+        </fieldset>
+      </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+              </div>
+              </div>
+            </div>
+
+           
+
+         
+        </div>
+    </body>
+</html>

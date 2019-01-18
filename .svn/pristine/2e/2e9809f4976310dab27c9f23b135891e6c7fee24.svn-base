@@ -1,0 +1,21 @@
+package com.KCB.bank;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+
+
+@EnableTransactionManagement
+@EnableAutoConfiguration
+@SpringBootApplication
+@EnableEncryptableProperties
+public class ESBportalApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ESBportalApplication.class, args);
+		
+	}
+}

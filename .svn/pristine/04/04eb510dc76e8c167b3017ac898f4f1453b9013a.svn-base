@@ -1,0 +1,178 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.KCB.bank.models;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author PMMuthama
+ */
+@Entity
+@Table(name = "ESBCORE_NOTIFICATIONS_EVENTS")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "EsbcoreNotificationsEvents.findAll", query = "SELECT e FROM EsbcoreNotificationsEvents e")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEpayload", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.epayload = :epayload")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEemailFlag", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.eemailFlag = :eemailFlag")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEsmsFlag", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.esmsFlag = :esmsFlag")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEserviceId", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.eserviceId = :eserviceId")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEemailNotifyCount", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.eemailNotifyCount = :eemailNotifyCount")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEsmsNotifyCount", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.esmsNotifyCount = :esmsNotifyCount")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEemailNotifyStatus", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.eemailNotifyStatus = :eemailNotifyStatus")
+    , @NamedQuery(name = "EsbcoreNotificationsEvents.findByEsmsNotifyStatus", query = "SELECT e FROM EsbcoreNotificationsEvents e WHERE e.esmsNotifyStatus = :esmsNotifyStatus")})
+public class EsbcoreNotificationsEvents implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Size(max = 1000)
+    @Column(name = "EPAYLOAD")
+    private String epayload;
+    @Size(max = 50)
+    @Column(name = "EEMAIL_FLAG")
+    private String eemailFlag;
+    @Size(max = 50)
+    @Column(name = "ESMS_FLAG")
+    private String esmsFlag;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ESERVICE_ID")
+    private BigDecimal eserviceId;
+    @Size(max = 50)
+    @Column(name = "EEMAIL_NOTIFY_COUNT")
+    private String eemailNotifyCount;
+    @Size(max = 50)
+    @Column(name = "ESMS_NOTIFY_COUNT")
+    private String esmsNotifyCount;
+    @Size(max = 50)
+    @Column(name = "EEMAIL_NOTIFY_STATUS")
+    private String eemailNotifyStatus;
+    @Size(max = 50)
+    @Column(name = "ESMS_NOTIFY_STATUS")
+    private String esmsNotifyStatus;
+    @JoinColumn(name = "ENOTIFICATIONS_ID", referencedColumnName = "NOTIFICATIONS_ID")
+    @ManyToOne(optional = false)
+    private EsbcoreNotifications enotificationsId;
+
+    public EsbcoreNotificationsEvents() {
+    }
+
+    public EsbcoreNotificationsEvents(BigDecimal eserviceId) {
+        this.eserviceId = eserviceId;
+    }
+
+    public String getEpayload() {
+        return epayload;
+    }
+
+    public void setEpayload(String epayload) {
+        this.epayload = epayload;
+    }
+
+    public String getEemailFlag() {
+        return eemailFlag;
+    }
+
+    public void setEemailFlag(String eemailFlag) {
+        this.eemailFlag = eemailFlag;
+    }
+
+    public String getEsmsFlag() {
+        return esmsFlag;
+    }
+
+    public void setEsmsFlag(String esmsFlag) {
+        this.esmsFlag = esmsFlag;
+    }
+
+    public BigDecimal getEserviceId() {
+        return eserviceId;
+    }
+
+    public void setEserviceId(BigDecimal eserviceId) {
+        this.eserviceId = eserviceId;
+    }
+
+    public String getEemailNotifyCount() {
+        return eemailNotifyCount;
+    }
+
+    public void setEemailNotifyCount(String eemailNotifyCount) {
+        this.eemailNotifyCount = eemailNotifyCount;
+    }
+
+    public String getEsmsNotifyCount() {
+        return esmsNotifyCount;
+    }
+
+    public void setEsmsNotifyCount(String esmsNotifyCount) {
+        this.esmsNotifyCount = esmsNotifyCount;
+    }
+
+    public String getEemailNotifyStatus() {
+        return eemailNotifyStatus;
+    }
+
+    public void setEemailNotifyStatus(String eemailNotifyStatus) {
+        this.eemailNotifyStatus = eemailNotifyStatus;
+    }
+
+    public String getEsmsNotifyStatus() {
+        return esmsNotifyStatus;
+    }
+
+    public void setEsmsNotifyStatus(String esmsNotifyStatus) {
+        this.esmsNotifyStatus = esmsNotifyStatus;
+    }
+
+    public EsbcoreNotifications getEnotificationsId() {
+        return enotificationsId;
+    }
+
+    public void setEnotificationsId(EsbcoreNotifications enotificationsId) {
+        this.enotificationsId = enotificationsId;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (eserviceId != null ? eserviceId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EsbcoreNotificationsEvents)) {
+            return false;
+        }
+        EsbcoreNotificationsEvents other = (EsbcoreNotificationsEvents) object;
+        if ((this.eserviceId == null && other.eserviceId != null) || (this.eserviceId != null && !this.eserviceId.equals(other.eserviceId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.KCB.bank.models.EsbcoreNotificationsEvents[ eserviceId=" + eserviceId + " ]";
+    }
+    
+}

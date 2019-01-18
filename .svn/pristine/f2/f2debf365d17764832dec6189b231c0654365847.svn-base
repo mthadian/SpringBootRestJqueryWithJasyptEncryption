@@ -1,0 +1,13 @@
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:orcl
+#spring.datasource.url=jdbc:oracle:thin:@172.16.17.93:1527:ESB
+
+spring.datasource.username=esbfwdev
+spring.datasource.password=ENC(swuwtk/vH7GqKQmnqdzOgeBQd/N4jg5X)
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+#spring.jpa.hibernate.ddl-auto=create-drop
+server.error.whitelabel.enabled=false
+ # Maximum age of the session cookie in seconds. also add if server.session.timeout not working
+
+
+#server.servlet.context-path=/api

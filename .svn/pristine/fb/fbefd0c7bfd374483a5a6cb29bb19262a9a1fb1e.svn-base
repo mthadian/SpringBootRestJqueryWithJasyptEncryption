@@ -1,0 +1,12 @@
+package com.KCB.bank.Repos;
+
+import java.math.BigDecimal;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.KCB.bank.models.EsbcoreDomain;
+
+public interface EsbcoreDomainRepository extends JpaRepository<EsbcoreDomain,BigDecimal> 
+{
+
+}

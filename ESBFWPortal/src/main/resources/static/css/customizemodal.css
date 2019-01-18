@@ -1,0 +1,15 @@
+.modal-lg {
+ 
+          max-width: 90% !important;
+ 
+          height:95%;
+         
+ 
+        }
+
+.modal-content {
+  border-radius: 0 !important;
+  height: auto;
+}
+
+
