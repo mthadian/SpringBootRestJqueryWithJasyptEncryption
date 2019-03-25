@@ -80,6 +80,11 @@ public class ViewController
 	{
 		return "sysdom/sysdomhome";
 	}
+	@GetMapping("/myservices")
+	public String myservices()
+	{
+		return "sysdom/myservices";
+	}
 	
 	
 	

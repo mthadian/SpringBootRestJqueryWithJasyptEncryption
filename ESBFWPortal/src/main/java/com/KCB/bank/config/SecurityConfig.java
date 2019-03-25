@@ -103,6 +103,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			//.antMatchers("/api/**").permitAll()
 			
 			.antMatchers("/sysdomhome").permitAll()
+			.antMatchers("/myservices").permitAll()
+			
 			.antMatchers("/newservice").permitAll()
 			.antMatchers("/service").permitAll()
 			.antMatchers("/newservices").permitAll()

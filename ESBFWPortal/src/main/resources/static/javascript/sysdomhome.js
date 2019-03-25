@@ -190,8 +190,9 @@ $(document).ready(function()
                 $('#tableservice tbody').append(service_data);
                  
                     $('#tableservice').DataTable({
-                        "scrollX": true,
-                          "columns": [
+                        scrollX: true,
+                       // scrollCollapse:true,
+                        "columns": [
                             { "width": "20%" },
                             { "width": "20%" },
                             { "width": "20%" },
@@ -212,6 +213,8 @@ $(document).ready(function()
                             { "width": "20%" },
                             { "width": "20%" }
                           ]
+
+                          
                         });
                                         //$('#tableservice').floatThead()
                    // $( "#tablediv" ).load(window.location.href + "#tablediv" );
